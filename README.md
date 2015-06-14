@@ -3,7 +3,13 @@
 `xforgot` generates and verifies time-limited one time passwords suitable for
 including in password reset links.
 
-# Usage
+## Install
+
+```sh
+npm install --save xforgot
+```
+
+## Usage
 
 ```js
 var xforgot = require("xforgot");
@@ -25,6 +31,6 @@ var xforgot = new XForgot({salt: "xyzzy"});
 // Continue as before...
 ```
 
-# License
+## License
 
 MIT
