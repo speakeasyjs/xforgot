@@ -1,19 +1,34 @@
 {
   "name": "xforgot",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "author": {
+    "name": "Michael Phan-Ba",
+    "email": "michael@mikepb.com"
+  },
+  "homepage": "http://github.com/mikepb/xforgot",
+  "keywords": [
+    "authentication",
+    "forgot password",
+    "hmac",
+    "hotp",
+    "one-time password",
+    "passwords",
+    "password reset",
+    "totp"
+  ],
   "license": "MIT",
-  "main": "xforgot.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/mikepb/xforgot.git"
   },
+  "main": "xforgot.js",
   "scripts": {
     "test": "mocha --check-leaks",
     "doc": "jsdoc -c jsdoc.json"
   },
   "dependencies": {
     "bs58": "^2.0.1",
-    "passcode": "^1.0.1"
+    "passcode": "^1.0.2"
   },
   "devDependencies": {
     "jsdoc": "^3.3.2",
