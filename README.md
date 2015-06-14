@@ -31,6 +31,10 @@ var xforgot = new XForgot({salt: "xyzzy"});
 // Continue as before...
 ```
 
+## Documentation
+
+Full documentation at http://mikepb.github.io/xforgot/
+
 ## License
 
 MIT
