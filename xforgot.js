@@ -154,7 +154,7 @@ XForgot.prototype.digest = function digest (options) {
  * @param {Integer} [options.step=24*60*60] Time step in seconds.
  * @param {Integer} [options.time] Time with which to calculate counter value.
  * @param {Integer} [options.counter] Counter value, calculated by default.
- * @return {Buffer} The one-time password.
+ * @return {String} The one-time password encoded using base58.
  * @memberof XForgot
  */
 
