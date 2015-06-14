@@ -1,0 +1,22 @@
+{
+  "name": "xforgot",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "xforgot.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikepb/xforgot.git"
+  },
+  "scripts": {
+    "test": "mocha --check-leaks",
+    "doc": "jsdoc -c jsdoc.json"
+  },
+  "dependencies": {
+    "bs58": "^2.0.1",
+    "passcode": "^1.0.1"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.3.2",
+    "mocha": "^2.2.5"
+  }
+}

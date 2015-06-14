@@ -1,0 +1,25 @@
+{
+  "source": {
+    "include": [
+      "xforgot.js",
+      "package.json",
+      "README.md"
+    ]
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "applicationName": "XForgot",
+    "meta": {
+      "title": "xforgot",
+      "description": "xforgot - a library for generating password reset tokens",
+      "keyword": "one-time passcode password forgot reset"
+    },
+    "default": {
+      "outputSourceFiles": true
+    },
+    "linenums": true
+  },
+  "opts": {
+    "destination": "docs"
+  }
+}
