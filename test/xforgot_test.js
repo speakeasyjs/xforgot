@@ -155,6 +155,52 @@ describe("xforgot", function () {
     });
   });
 
+  describe("XForgot without the secret option", function () {
+    before(function () {
+      this.x = new xforgot.XForgot();
+    });
+
+    it("should require `token` and `secret` when digesting the secret", function () {
+      var x = this.x;
+      assert.throws(function () {
+        x.digestSecret({});
+      });
+    });
+
+    it("should require `token` and `secret` when digesting", function () {
+      var x = this.x;
+      assert.throws(function () {
+        x.digest({time: 0});
+      });
+      assert.throws(function () {
+        x.digest({salted: saltedx, time: 0});
+      });
+    });
+
+    it("should require `token` and `secret` when generating", function () {
+      var x = this.x;
+      assert.throws(function () {
+        x.generate({time: 0});
+      });
+      assert.throws(function () {
+        x.generate({salted: saltedx, time: 0});
+      });
+    });
+
+    it("should require `token` and `secret` when validating", function () {
+      var x = this.x;
+      assert.throws(function () {
+        x.verify({token: codex, time: 0});
+      });
+      assert.throws(function () {
+        x.verify({token: codex, salted: saltedx, time: 0});
+      });
+      assert.throws(function () {
+        !x.verify({token: "code", salted: saltedx, time: 0});
+      });
+    });
+  });
+
   describe("XForgot with step", function () {
     before(function () {
       this.x = new xforgot.XForgot({step: 60*60});

@@ -12,19 +12,19 @@ var passcode = require("passcode");
  * Default salt value.
  */
 
-const DEFAULT_SALT = "";
+var DEFAULT_SALT = "";
 
 /**
  * Default time step value.
  */
 
-const DEFAULT_STEP = 24*60*60;
+var DEFAULT_STEP = 24*60*60;
 
 /**
  * Default window value.
  */
 
-const DEFAULT_WINDOW = 1;
+var DEFAULT_WINDOW = 1;
 
 /**
  * Copy properties from sources to target.
@@ -45,7 +45,6 @@ var extend = function (target /* ...sources */) {
 
 /**
  * Create a new XForgot instance.
- *
  *
  * The XForgot class overrides the default options used when generating and
  * verifying time-limited one-time passwords. The default XForgot instance
@@ -102,9 +101,12 @@ XForgot.prototype.digestSecret = function digestSecret (options) {
   var secret = options.secret;
   var salt = options.salt || this.salt || DEFAULT_SALT;
 
+  // required options
+  if (!secret) throw new TypeError("missing `secret` option");
+
   // hash secret with salt
   var hmac = crypto.createHmac("sha256", salt);
-  hmac.write(secret);
+  if (secret) hmac.write(secret);
 
   // return buffer
   return hmac.digest();
@@ -185,16 +187,16 @@ XForgot.prototype.generate = function generate (options) {
 XForgot.prototype.verify = function verify (options) {
   var i;
 
-  // shadow options
-  options = Object.create(options);
-
   // unpack options
-  if (!options) options = {};
+  options = options ? extend({}, options) : {};
   var token = options.token;
   var secret = options.salted || this.digestSecret(options);
   var step = options.step || this.step || DEFAULT_STEP;
   var time = options.time;
   var window = options.window || this.window || DEFAULT_WINDOW;
+
+  // required options
+  if (!token) throw new TypeError("missing `token` option");
 
   // calculate totp counter value
   var counter = options.counter;

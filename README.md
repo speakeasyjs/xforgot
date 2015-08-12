@@ -17,7 +17,7 @@ var token = xforgot({secret: "xyzzy", salt: "foobar"});
 
 // Send token to user via URL...
 
-if (xforgot.verify(token)) {
+if (xforgot.verify({ token: token, secret: "xyzzy", salt: "foobar" })) {
   // Reset the user's password...
 }
 ```
@@ -30,6 +30,15 @@ var XForgot = require("xforgot").XForgot;
 var xforgot = new XForgot({salt: "xyzzy"});
 // Continue as before...
 ```
+
+Note the `secret` option is required to both generate and verify user-specific
+tokens. Otherwise, everyone would be able to reset each other's passwords 😱
+
+On the other hand, the `salt` option is used to make it more difficult for
+someone to generate valid tokens if a hacker were to somehow gain access to the
+user-specific secret. The salt may be generated per token or set per
+application. In either case, the salt should be stored separately from the user-
+specific secret for better security.
 
 ## Documentation
 
